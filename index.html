@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GUIDO no Show do Milhão 🏆</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #FFD700;
+    --gold2: #FFA500;
+    --dark: #0a0a0f;
+    --dark2: #12121e;
+    --dark3: #1a1a2e;
+    --red: #e63946;
+    --green: #2ecc71;
+    --blue: #3a86ff;
+    --purple: #9b5de5;
+    --text: #f0e6d3;
+    --glow: 0 0 20px rgba(255,215,0,0.5);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* STARS BG */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(1px 1px at 20% 30%, rgba(255,215,0,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 80% 10%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 60%, rgba(255,215,0,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 10% 80%, rgba(255,255,255,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 70%, rgba(255,215,0,0.3) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(ellipse at center, #1a0a2e 0%, #0a0a0f 70%);
+    overflow: hidden;
+    padding: 2rem;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255,215,0,0.05) 60deg, transparent 120deg),
+      conic-gradient(from 180deg at 50% 50%, transparent 0deg, rgba(255,165,0,0.05) 60deg, transparent 120deg);
+    animation: rotateBg 20s linear infinite;
+  }
+
+  @keyframes rotateBg {
+    to { transform: rotate(360deg); }
+  }
+
+  .spotlight {
+    position: absolute;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);
+    animation: spotMove 4s ease-in-out infinite alternate;
+    top: 10%; left: 20%;
+  }
+  .spotlight2 {
+    position: absolute;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,100,0,0.1) 0%, transparent 70%);
+    animation: spotMove2 5s ease-in-out infinite alternate;
+    bottom: 20%; right: 15%;
+  }
+
+  @keyframes spotMove {
+    from { transform: translate(0,0) scale(1); }
+    to { transform: translate(50px, 30px) scale(1.3); }
+  }
+  @keyframes spotMove2 {
+    from { transform: translate(0,0) scale(0.8); }
+    to { transform: translate(-40px, -20px) scale(1.2); }
+  }
+
+  .hero-badge {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1rem;
+    color: var(--gold2);
+    letter-spacing: 4px;
+    margin-bottom: 1rem;
+    animation: fadeDown 0.8s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 10vw, 7rem);
+    line-height: 0.9;
+    color: var(--gold);
+    text-shadow: 0 0 40px rgba(255,215,0,0.8), 0 0 80px rgba(255,165,0,0.4);
+    animation: fadeDown 0.8s ease 0.2s both, pulse 3s ease-in-out 1s infinite;
+    position: relative;
+    z-index: 1;
+  }
+
+  @keyframes pulse {
+    0%, 100% { text-shadow: 0 0 40px rgba(255,215,0,0.8), 0 0 80px rgba(255,165,0,0.4); }
+    50% { text-shadow: 0 0 60px rgba(255,215,0,1), 0 0 120px rgba(255,165,0,0.7); }
+  }
+
+  .hero-sub {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-top: 1rem;
+    letter-spacing: 2px;
+    animation: fadeDown 0.8s ease 0.4s both;
+  }
+
+  .hero-desc {
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    font-size: 1rem;
+    color: rgba(240,230,211,0.7);
+    line-height: 1.7;
+    animation: fadeDown 0.8s ease 0.6s both;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeDown 0.8s ease 0.8s both;
+  }
+
+  .btn {
+    padding: 0.9rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    color: #000;
+    box-shadow: 0 4px 20px rgba(255,215,0,0.4);
+  }
+  .btn-gold:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(255,215,0,0.6);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--gold);
+    border: 2px solid var(--gold);
+  }
+  .btn-outline:hover {
+    background: rgba(255,215,0,0.1);
+    transform: translateY(-3px);
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* PRIZE LADDER */
+  .prize-section {
+    background: var(--dark2);
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-bottom: 2.5rem;
+    text-shadow: 0 0 20px rgba(255,215,0,0.4);
+  }
+
+  .prize-ladder {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .prize-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    animation: slideRight 0.5s ease both;
+  }
+
+  .prize-item:nth-child(1) { animation-delay: 0.1s; background: rgba(255,215,0,0.08); border-left: 3px solid var(--gold); }
+  .prize-item:nth-child(2) { animation-delay: 0.2s; background: rgba(255,215,0,0.1); border-left: 3px solid var(--gold); }
+  .prize-item:nth-child(3) { animation-delay: 0.3s; background: rgba(255,165,0,0.12); border-left: 3px solid var(--gold2); }
+  .prize-item:nth-child(4) { animation-delay: 0.4s; background: rgba(255,165,0,0.15); border-left: 3px solid var(--gold2); }
+  .prize-item:nth-child(5) { animation-delay: 0.5s; background: rgba(230,57,70,0.15); border-left: 3px solid var(--red); }
+  .prize-item:nth-child(6) { animation-delay: 0.6s; background: rgba(230,57,70,0.2); border-left: 4px solid var(--red); font-size: 1.3rem; }
+
+  .prize-value {
+    color: var(--gold);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+  }
+
+  .prize-item:nth-child(6) .prize-value {
+    font-size: 1.8rem;
+    color: var(--gold2);
+    text-shadow: 0 0 15px rgba(255,165,0,0.6);
+  }
+
+  @keyframes slideRight {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* PLAN SECTION */
+  .plan-section {
+    padding: 5rem 2rem;
+    background: var(--dark3);
+  }
+
+  .plan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .day-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,215,0,0.15);
+    border-radius: 8px;
+    padding: 1.8rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .day-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold2));
+  }
+
+  .day-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255,215,0,0.4);
+    box-shadow: 0 10px 30px rgba(255,215,0,0.1);
+  }
+
+  .day-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    color: var(--gold2);
+    margin-bottom: 0.3rem;
+  }
+
+  .day-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .day-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .day-items li {
+    font-size: 0.95rem;
+    color: rgba(240,230,211,0.85);
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .day-items li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--gold2);
+  }
+
+  .day-card.today {
+    border-color: var(--gold);
+    background: rgba(255,215,0,0.06);
+  }
+
+  .today-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: #000;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    margin-bottom: 0.5rem;
+  }
+
+  /* STRATEGIES */
+  .strategy-section {
+    padding: 5rem 2rem;
+    background: var(--dark2);
+  }
+
+  .strategy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .strategy-card {
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: all 0.3s;
+  }
+
+  .strategy-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255,255,255,0.06);
+  }
+
+  .strategy-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .strategy-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    margin-bottom: 0.7rem;
+    letter-spacing: 2px;
+  }
+
+  .strategy-desc {
+    font-size: 0.9rem;
+    color: rgba(240,230,211,0.75);
+    line-height: 1.6;
+  }
+
+  .strategy-warning {
+    font-size: 0.85rem;
+    color: var(--red);
+    margin-top: 0.5rem;
+    font-weight: 600;
+  }
+
+  /* QUIZ SECTION */
+  .quiz-section {
+    padding: 5rem 2rem;
+    background: var(--dark3);
+    text-align: center;
+  }
+
+  .category-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .cat-tab {
+    padding: 0.5rem 1.2rem;
+    border: 2px solid rgba(255,215,0,0.3);
+    border-radius: 30px;
+    background: transparent;
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+    letter-spacing: 1px;
+  }
+
+  .cat-tab:hover, .cat-tab.active {
+    background: var(--gold);
+    color: #000;
+    border-color: var(--gold);
+    box-shadow: 0 0 15px rgba(255,215,0,0.4);
+  }
+
+  .quiz-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .question-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,215,0,0.2);
+    border-radius: 12px;
+    padding: 2.5rem;
+    margin-bottom: 1rem;
+    display: none;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .question-card.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .q-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .q-cat {
+    color: var(--gold2);
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .q-level {
+    padding: 0.2rem 0.7rem;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.8rem;
+  }
+
+  .level-1 { background: rgba(46,204,113,0.2); color: var(--green); }
+  .level-2 { background: rgba(255,165,0,0.2); color: var(--gold2); }
+  .level-3 { background: rgba(230,57,70,0.2); color: var(--red); }
+
+  .q-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 1.8rem;
+    text-align: left;
+  }
+
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+
+  .option-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.9rem 1.2rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    width: 100%;
+  }
+
+  .option-btn:hover {
+    background: rgba(255,215,0,0.1);
+    border-color: rgba(255,215,0,0.4);
+    transform: scale(1.02);
+  }
+
+  .option-btn.correct {
+    background: rgba(46,204,113,0.2);
+    border-color: var(--green);
+    color: var(--green);
+    animation: correctFlash 0.4s ease;
+  }
+
+  .option-btn.wrong {
+    background: rgba(230,57,70,0.2);
+    border-color: var(--red);
+    color: var(--red);
+    animation: wrongShake 0.4s ease;
+  }
+
+  .option-btn.disabled {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  @keyframes correctFlash {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes wrongShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
+  }
+
+  .option-letter {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(255,215,0,0.15);
+    color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .answer-reveal {
+    margin-top: 1.2rem;
+    padding: 1rem 1.2rem;
+    background: rgba(46,204,113,0.08);
+    border-left: 3px solid var(--green);
+    border-radius: 4px;
+    font-size: 0.95rem;
+    text-align: left;
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .answer-reveal.show { display: block; }
+  .answer-reveal span { color: var(--green); font-weight: 700; }
+
+  .quiz-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+  }
+
+  .q-counter {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 1px;
+  }
+
+  /* TIPS SECTION */
+  .tips-section {
+    padding: 5rem 2rem;
+    background: var(--dark);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .tip-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px;
+    padding: 1.5rem;
+    position: relative;
+  }
+
+  .tip-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    color: rgba(255,215,0,0.08);
+    position: absolute;
+    top: -0.5rem; right: 1rem;
+    line-height: 1;
+  }
+
+  .tip-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin-bottom: 0.7rem;
+    letter-spacing: 1px;
+  }
+
+  .tip-text {
+    font-size: 0.9rem;
+    color: rgba(240,230,211,0.8);
+    line-height: 1.6;
+  }
+
+  /* GOLDEN RULE */
+  .golden-rule {
+    background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,165,0,0.05));
+    border: 2px solid rgba(255,215,0,0.4);
+    border-radius: 12px;
+    padding: 3rem;
+    text-align: center;
+    max-width: 700px;
+    margin: 4rem auto 0;
+  }
+
+  .golden-rule-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    color: var(--gold);
+    text-shadow: var(--glow);
+    margin-bottom: 1rem;
+  }
+
+  .golden-rule-text {
+    font-size: 1.1rem;
+    color: rgba(240,230,211,0.9);
+    line-height: 1.7;
+  }
+
+  .golden-rule-text strong {
+    color: var(--red);
+    font-size: 1.2rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark2);
+    text-align: center;
+    padding: 2rem;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(255,215,0,0.1);
+  }
+
+  footer span { color: var(--gold2); }
+
+  /* PROGRESS BAR */
+  .progress-wrap {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+  }
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold2));
+    border-radius: 2px;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 8px rgba(255,215,0,0.5);
+  }
+
+  /* CONFETTI */
+  .confetti-piece {
+    position: fixed;
+    width: 8px; height: 8px;
+    opacity: 0;
+    z-index: 1000;
+    pointer-events: none;
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+  }
+
+  .modal-overlay.show { display: flex; }
+
+  .modal {
+    background: var(--dark2);
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    padding: 3rem;
+    text-align: center;
+    max-width: 500px;
+    animation: scaleIn 0.4s ease;
+  }
+
+  @keyframes scaleIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .modal-emoji { font-size: 4rem; margin-bottom: 1rem; }
+  .modal-title { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--gold); }
+  .modal-text { font-size: 1rem; color: rgba(255,255,255,0.7); margin: 1rem 0 2rem; }
+  .modal-score { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--gold2); }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .options-grid { grid-template-columns: 1fr; }
+    .stats-bar { gap: 1rem; }
+    .quiz-nav { flex-direction: column; gap: 1rem; }
+  }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10,10,15,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,215,0,0.1);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    letter-spacing: 2px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .hero { padding-top: 5rem; }
+
+  /* CHEAT SHEET */
+  .cheat-section {
+    padding: 5rem 2rem;
+    background: var(--dark2);
+  }
+
+  .cheat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .cheat-card {
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border-top: 3px solid;
+  }
+
+  .cheat-card.science { border-color: var(--blue); }
+  .cheat-card.geo { border-color: var(--green); }
+  .cheat-card.lang { border-color: var(--purple); }
+  .cheat-card.history { border-color: var(--red); }
+  .cheat-card.general { border-color: var(--gold); }
+
+  .cheat-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+  }
+
+  .cheat-card.science .cheat-title { color: var(--blue); }
+  .cheat-card.geo .cheat-title { color: var(--green); }
+  .cheat-card.lang .cheat-title { color: var(--purple); }
+  .cheat-card.history .cheat-title { color: var(--red); }
+  .cheat-card.general .cheat-title { color: var(--gold); }
+
+  .cheat-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .cheat-items li {
+    font-size: 0.9rem;
+    color: rgba(240,230,211,0.85);
+    padding: 0.3rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .cheat-items li strong {
+    color: var(--gold2);
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">🏆 GUIDO NO MILHÃO</div>
+  <ul class="nav-links">
+    <li><a href="#plano">Plano</a></li>
+    <li><a href="#estrategia">Estratégia</a></li>
+    <li><a href="#quiz">Simulado</a></li>
+    <li><a href="#cheatsheet">Cola Rápida</a></li>
+    <li><a href="#dicas">Dicas</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="spotlight"></div>
+  <div class="spotlight2"></div>
+  <div class="hero-badge">⭐ PLANO DE PREPARAÇÃO INTENSIVA ⭐</div>
+  <h1 class="hero-title">GUIDO<br>NO SHOW<br>DO MILHÃO</h1>
+  <p class="hero-sub">Semana decisiva · Quinta a Quarta</p>
+  <p class="hero-desc">Professor de História com conhecimento de sobra — agora falta só treinar o formato certo. Esse site reúne tudo: plano dia a dia, perguntas do Gemini, Grok e ChatGPT, estratégias e cola rápida.</p>
+  <div class="hero-cta">
+    <a href="#quiz" class="btn btn-gold">🎯 Ir pro Simulado</a>
+    <a href="#plano" class="btn btn-outline">📋 Ver o Plano</a>
+  </div>
+</section>
+
+<!-- PRIZE LADDER -->
+<section class="prize-section">
+  <h2 class="section-title">A ESCADA DO PRÊMIO</h2>
+  <div class="prize-ladder">
+    <div class="prize-item">
+      <span>Pergunta 1-3 · Nível 1</span>
+      <span class="prize-value">R$ 1.000</span>
+    </div>
+    <div class="prize-item">
+      <span>Pergunta 4-6 · Nível 2</span>
+      <span class="prize-value">R$ 10.000</span>
+    </div>
+    <div class="prize-item">
+      <span>Pergunta 7-9 · Nível 2-3</span>
+      <span class="prize-value">R$ 50.000</span>
+    </div>
+    <div class="prize-item">
+      <span>Pergunta 10-12 · Nível 3</span>
+      <span class="prize-value">R$ 100.000</span>
+    </div>
+    <div class="prize-item">
+      <span>Pergunta 13-14 · Nível 3 Difícil</span>
+      <span class="prize-value">R$ 500.000</span>
+    </div>
+    <div class="prize-item">
+      <span>🔥 PERGUNTA FINAL 🔥</span>
+      <span class="prize-value">R$ 1.000.000</span>
+    </div>
+  </div>
+</section>
+
+<!-- PLANO -->
+<section class="plan-section" id="plano">
+  <h2 class="section-title" style="text-align:center;">PLANO SEMANA DECISIVA</h2>
+  <div class="plan-grid">
+
+    <div class="day-card today reveal">
+      <span class="today-badge">⚡ HOJE</span>
+      <div class="day-label">QUINTA-FEIRA</div>
+      <div class="day-title">O Choque de Realidade</div>
+      <ul class="day-items">
+        <li>Responder 50 perguntas no cronômetro — sem pensar demais</li>
+        <li>Identificar: o problema é <em>"falta de saber"</em> ou <em>"excesso de análise"?</em></li>
+        <li>Mapear as categorias mais fracas</li>
+        <li>Simular tempo médio por pergunta (máx. 30s nas fáceis)</li>
+      </ul>
+    </div>
+
+    <div class="day-card reveal">
+      <div class="day-label">SEXTA-FEIRA</div>
+      <div class="day-title">O Pavor das Humanas (Exatas)</div>
+      <ul class="day-items">
+        <li>Conversões: 1 hectare = 10.000 m² · 1 arroba = 15 kg · 1 milha = 1,6 km</li>
+        <li>Nomes de ossos: fêmur, estribo, patela, clavícula, úmero</li>
+        <li>Símbolos químicos: Au (ouro), Ag (prata), Pb (chumbo), Fe (ferro), W (tungstênio), K (potássio)</li>
+        <li>Tabela periódica básica: números atômicos 1-20</li>
+      </ul>
+    </div>
+
+    <div class="day-card reveal">
+      <div class="day-label">SÁBADO</div>
+      <div class="day-title">O Dia do "Lixo" Cultural</div>
+      <ul class="day-items">
+        <li>Apresentadores: Ratinho, Celso Portiolli, Rodrigo Faro, Marcos Mion, Luciano Huck</li>
+        <li>Reality shows: BBB, The Voice, MasterChef — últimos vencedores</li>
+        <li>Handebol: 7 jogadores · Boliche: "strike" = todos os pinos de uma vez</li>
+        <li>Músicas do TikTok/rádio — pelo menos saber o nome dos artistas top</li>
+      </ul>
+    </div>
+
+    <div class="day-card reveal">
+      <div class="day-label">DOMINGO</div>
+      <div class="day-title">O Vernáculo</div>
+      <ul class="day-items">
+        <li>Coletivos: alcateia (lobos), cardume (peixes), atlas (mapas), enxame (abelhas)</li>
+        <li>Coletivos raros: catedral (bispos), réstia (alhos), molho (chaves)</li>
+        <li>Os 4 porquês: porque/porquê/por que/por quê</li>
+        <li>Concordâncias traiçoeiras: "Faz anos que..." = singular (impessoal)</li>
+        <li>Acentuação pós-reforma: "ideia", "voo", "veem" — sem acento!</li>
+      </ul>
+    </div>
+
+    <div class="day-card reveal">
+      <div class="day-label">SEGUNDA-FEIRA</div>
+      <div class="day-title">O Mapa-Múndi</div>
+      <ul class="day-items">
+        <li>Capitais esquecidas: Astana (Cazaquistão), Tashkent (Uzbequistão), Ulan Bator (Mongólia)</li>
+        <li>África: Nairóbi (Quênia), Adis Abeba (Etiópia), Luanda (Angola)</li>
+        <li>Armadilhas: Austrália = Camberra (não Sydney!), Canadá = Ottawa (não Toronto!)</li>
+        <li>Bandeiras: Bélgica×Alemanha×França — cores em posições diferentes</li>
+      </ul>
+    </div>
+
+    <div class="day-card reveal">
+      <div class="day-label">TERÇA-FEIRA</div>
+      <div class="day-title">A História que Não Cai no Vestibular</div>
+      <ul class="day-items">
+        <li>Datas exatas: Bastilha = 14/07/1789 · Muro de Berlim = 09/11/1989</li>
+        <li>Nomes específicos: Almirante Togo (Tsushima) · Francisco Octaviano (Tríplice Aliança)</li>
+        <li>Tratados: Tordesilhas (1494) · Madrid (1750) · Vestfália (1648)</li>
+        <li>Líderes de revoltas: Pacífico Licutan (Malês) · Manuel Congo · Jean-Jacques Dessalines (Haiti)</li>
+      </ul>
+    </div>
+
+    <div class="day-card today reveal" style="grid-column: span 1;">
+      <div class="day-label">QUARTA-FEIRA</div>
+      <div class="day-title">O Ensaio Geral</div>
+      <ul class="day-items">
+        <li>Simulação real com alguém fazendo o papel da Patrícia Abravanel</li>
+        <li>Praticar o uso das cartas (universitária, pular, eliminar 2, plateia)</li>
+        <li>Regra de Ouro: sem 100% de certeza na pergunta de valor alto → usa a ajuda</li>
+        <li>Treinar frases para ganhar tempo: "Patrícia, eu acho que... mas deixa eu pensar"</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ESTRATEGIA -->
+<section class="strategy-section" id="estrategia">
+  <h2 class="section-title" style="text-align:center;">AS 4 CARTAS DE APOIO</h2>
+  <div class="strategy-grid">
+    <div class="strategy-card reveal">
+      <div class="strategy-icon">🎓</div>
+      <div class="strategy-name">UNIVERSITÁRIA</div>
+      <div class="strategy-desc">Consulta uma universidade. Use em perguntas de exatas ou ciências onde a lógica pode falhar. Boa para nível 3 de matemática.</div>
+    </div>
+    <div class="strategy-card reveal">
+      <div class="strategy-icon">⏭️</div>
+      <div class="strategy-name">PULAR</div>
+      <div class="strategy-desc">Troca a pergunta por outra. ECONOMIZE para perguntas de cultura pop ou "lixo cultural" — exatamente o ponto fraco de um professor acadêmico.</div>
+    </div>
+    <div class="strategy-card reveal">
+      <div class="strategy-icon">✂️</div>
+      <div class="strategy-name">ELIMINAR 2</div>
+      <div class="strategy-desc">Remove 2 alternativas erradas. Usar quando você oscila entre 2 opções. Aumenta a chance para 50% — aí sim vale o risco.</div>
+    </div>
+    <div class="strategy-card reveal">
+      <div class="strategy-icon">👥</div>
+      <div class="strategy-name">PLATEIA</div>
+      <div class="strategy-desc">A plateia acerta muito em perguntas populares, culturais e de senso comum. Menos confiável em história e ciências avançadas.</div>
+      <div class="strategy-warning">⚠️ Não confie em história avançada com a plateia!</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- QUIZ -->
+<section class="quiz-section" id="quiz">
+  <h2 class="section-title">SIMULADO INTERATIVO</h2>
+  <p style="color:rgba(255,255,255,0.5); margin-bottom:2rem; font-size:0.95rem;">Perguntas do Gemini, Grok e ChatGPT — clique na alternativa e veja a explicação!</p>
+
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num" id="score-correct">0</div>
+      <div class="stat-label">CERTAS</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" id="score-wrong">0</div>
+      <div class="stat-label">ERRADAS</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" id="score-pct">0%</div>
+      <div class="stat-label">APROVEIT.</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" id="score-total">0</div>
+      <div class="stat-label">RESPONDIDAS</div>
+    </div>
+  </div>
+
+  <div class="category-tabs" id="cat-tabs">
+    <button class="cat-tab active" data-cat="all"     onclick="filterCat('all', this)">Todas</button>
+    <button class="cat-tab"        data-cat="ciencias" onclick="filterCat('ciencias', this)">🔬 Ciências & Mat.</button>
+    <button class="cat-tab"        data-cat="gerais"   onclick="filterCat('gerais', this)">🌍 Conhecimentos Gerais</button>
+    <button class="cat-tab"        data-cat="historia" onclick="filterCat('historia', this)">📜 História</button>
+    <button class="cat-tab"        data-cat="portugues"onclick="filterCat('portugues', this)">📖 Português</button>
+    <button class="cat-tab"        data-cat="nivel1"   onclick="filterCat('nivel1', this)">🟢 Só Nível 1</button>
+    <button class="cat-tab"        data-cat="nivel2"   onclick="filterCat('nivel2', this)">🟡 Só Nível 2</button>
+    <button class="cat-tab"        data-cat="nivel3"   onclick="filterCat('nivel3', this)">🔴 Só Nível 3</button>
+  </div>
+
+  <div class="quiz-wrapper">
+    <div class="progress-wrap">
+      <div class="progress-bar" id="progress-bar" style="width:0%"></div>
+    </div>
+
+    <div id="quiz-container"></div>
+
+    <div class="quiz-nav">
+      <button class="btn btn-outline" onclick="prevQuestion()" id="btn-prev">← Anterior</button>
+      <span class="q-counter" id="q-counter">1 / 1</span>
+      <button class="btn btn-gold" onclick="nextQuestion()" id="btn-next">Próxima →</button>
+    </div>
+  </div>
+</section>
+
+<!-- CHEAT SHEET -->
+<section class="cheat-section" id="cheatsheet">
+  <h2 class="section-title" style="text-align:center;">COLA RÁPIDA 🧠</h2>
+  <p style="text-align:center; color:rgba(255,255,255,0.5); margin-bottom:2.5rem;">Os fatos mais cobrados do Show do Milhão — decore isso antes de quarta!</p>
+  <div class="cheat-grid">
+
+    <div class="cheat-card science reveal">
+      <div class="cheat-title">⚗️ Símbolos Químicos</div>
+      <ul class="cheat-items">
+        <li>Ferro <strong>Fe</strong></li>
+        <li>Ouro <strong>Au</strong></li>
+        <li>Prata <strong>Ag</strong></li>
+        <li>Chumbo <strong>Pb</strong></li>
+        <li>Potássio <strong>K</strong></li>
+        <li>Tungstênio <strong>W</strong></li>
+        <li>Sódio <strong>Na</strong></li>
+        <li>Mercúrio <strong>Hg</strong></li>
+        <li>Carbono (nº atômico) <strong>6</strong></li>
+      </ul>
+    </div>
+
+    <div class="cheat-card science reveal">
+      <div class="cheat-title">🔢 Números & Fórmulas</div>
+      <ul class="cheat-items">
+        <li>π ≈ <strong>3,14159</strong></li>
+        <li>Gravidade <strong>9,8 m/s²</strong></li>
+        <li>1 m³ = <strong>1.000 L</strong></li>
+        <li>pH neutro <strong>7</strong></li>
+        <li>Som triângulo <strong>180°</strong></li>
+        <li>Metano <strong>CH₄</strong></li>
+        <li>H₂SO₄ <strong>Ác. Sulfúrico</strong></li>
+        <li>Tipo O- <strong>Doador Universal</strong></li>
+      </ul>
+    </div>
+
+    <div class="cheat-card geo reveal">
+      <div class="cheat-title">🌍 Capitais-Armadilha</div>
+      <ul class="cheat-items">
+        <li>Austrália <strong>Camberra</strong></li>
+        <li>Canadá <strong>Ottawa</strong></li>
+        <li>Brasil <strong>Brasília</strong></li>
+        <li>EUA <strong>Washington D.C.</strong></li>
+        <li>Nova Zelândia <strong>Wellington</strong></li>
+        <li>Kazaquistão <strong>Astana</strong></li>
+        <li>Índia <strong>Nova Déli</strong></li>
+        <li>Paquistão <strong>Islamabade</strong></li>
+      </ul>
+    </div>
+
+    <div class="cheat-card geo reveal">
+      <div class="cheat-title">🇧🇷 Brasil em Números</div>
+      <ul class="cheat-items">
+        <li>Maior estádio <strong>Maracanã (RJ)</strong></li>
+        <li>Maior cidade <strong>São Paulo</strong></li>
+        <li>Ponto mais alto <strong>Pico da Neblina</strong></li>
+        <li>Capital MG <strong>Belo Horizonte</strong></li>
+        <li>Capital TO <strong>Palmas</strong></li>
+        <li>Festival Boi-Bumbá <strong>Parintins (AM)</strong></li>
+        <li>Fuso de Brasília <strong>UTC-3</strong></li>
+        <li>Maior produtor café <strong>Brasil 🇧🇷</strong></li>
+      </ul>
+    </div>
+
+    <div class="cheat-card lang reveal">
+      <div class="cheat-title">📖 Coletivos Raros</div>
+      <ul class="cheat-items">
+        <li>Lobos <strong>Alcateia</strong></li>
+        <li>Abelhas <strong>Enxame</strong></li>
+        <li>Peixes <strong>Cardume</strong></li>
+        <li>Mapas <strong>Atlas</strong></li>
+        <li>Chaves <strong>Molho</strong></li>
+        <li>Alhos <strong>Réstia</strong></li>
+        <li>Bispos <strong>Catedral</strong></li>
+        <li>Jornais <strong>Pilha</strong></li>
+      </ul>
+    </div>
+
+    <div class="cheat-card lang reveal">
+      <div class="cheat-title">✏️ Português Traiçoeiro</div>
+      <ul class="cheat-items">
+        <li>Plural de pão <strong>Pães</strong></li>
+        <li>Plural de cidadão <strong>Cidadãos</strong></li>
+        <li>Plural de animal <strong>Animais</strong></li>
+        <li>"Voo" e "ideia" <strong>sem acento</strong></li>
+        <li>Mau = adjetivo <strong>(mau humor)</strong></li>
+        <li>Mal = advérbio <strong>(sinto mal)</strong></li>
+        <li>"Faz anos" <strong>não concorda c/ plural</strong></li>
+        <li>Assistir a = <strong>presenciar</strong></li>
+      </ul>
+    </div>
+
+    <div class="cheat-card history reveal">
+      <div class="cheat-title">📜 Datas que Caem</div>
+      <ul class="cheat-items">
+        <li>Tordesilhas <strong>1494</strong></li>
+        <li>Tratado de Madrid <strong>1750</strong></li>
+        <li>Queda da Bastilha <strong>14/07/1789</strong></li>
+        <li>Paz de Vestfália <strong>1648</strong></li>
+        <li>Muro de Berlim ↓ <strong>09/11/1989</strong></li>
+        <li>Revolta da Chibata <strong>1910</strong></li>
+        <li>Abdicação D. Pedro I <strong>07/04/1831</strong></li>
+        <li>Rep. China (Qing) <strong>1911</strong></li>
+      </ul>
+    </div>
+
+    <div class="cheat-card general reveal">
+      <div class="cheat-title">🌟 Cultura Geral Rápida</div>
+      <ul class="cheat-items">
+        <li>Caixa-preta avião <strong>Laranja 🟠</strong></li>
+        <li>1º homem espaço <strong>Yuri Gagarin (1961)</strong></li>
+        <li>1º na Lua <strong>Neil Armstrong</strong></li>
+        <li>Secretário-Geral ONU <strong>António Guterres</strong></li>
+        <li>Oscar 2020 <strong>Parasita</strong></li>
+        <li>Copa 2022 <strong>Catar</strong></li>
+        <li>Dubai fica em <strong>Emirados Árabes</strong></li>
+        <li>Garota de Ipanema <strong>Tom Jobim</strong></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- DICAS -->
+<section class="tips-section" id="dicas">
+  <h2 class="section-title" style="text-align:center;">DICAS PRO</h2>
+  <div class="tips-grid">
+    <div class="tip-card reveal">
+      <div class="tip-num">01</div>
+      <div class="tip-title">Velocidade nas Fáceis</div>
+      <p class="tip-text">Perguntas de nível 1 devem ser respondidas em menos de 10 segundos. Hesitar no básico consome tempo emocional e desgasta para as difíceis.</p>
+    </div>
+    <div class="tip-card reveal">
+      <div class="tip-num">02</div>
+      <div class="tip-title">Cuidado com o "Achismo"</div>
+      <p class="tip-text">A diferença entre 90% de certeza e 100% vale R$500.000. Se não tiver certeza absoluta na pergunta final — para na garantida anterior.</p>
+    </div>
+    <div class="tip-card reveal">
+      <div class="tip-num">03</div>
+      <div class="tip-title">Armadilhas de Capital</div>
+      <p class="tip-text">Sydney não é capital da Austrália. Toronto não é do Canadá. O Show ama essas pegadinhas porque a resposta "óbvia" está errada.</p>
+    </div>
+    <div class="tip-card reveal">
+      <div class="tip-num">04</div>
+      <div class="tip-title">Português é Pontuação</div>
+      <p class="tip-text">Para um professor de História, Português parece fácil — mas são as questões mais traiçoeiras. Revisão de coletivos e acentuação pós-reforma é obrigatória.</p>
+    </div>
+    <div class="tip-card reveal">
+      <div class="tip-num">05</div>
+      <div class="tip-title">Não Tente Resolver, Reconheça</div>
+      <p class="tip-text">No Show, você não calcula — você reconhece. Treine para que a resposta apareça automaticamente, sem raciocínio longo.</p>
+    </div>
+    <div class="tip-card reveal">
+      <div class="tip-num">06</div>
+      <div class="tip-title">Elimine por Lógica</div>
+      <p class="tip-text">Mesmo sem saber a resposta certa, elimine o que claramente está errado. Com 2 opções restantes e a carta "Eliminar 2" ainda guardada, as chances sobem muito.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-emoji" id="modal-emoji">🎉</div>
+    <div class="modal-title" id="modal-title">PARABÉNS!</div>
+    <div class="modal-score" id="modal-score">0/0</div>
+    <p class="modal-text" id="modal-text">Seu resultado final!</p>
+    <button class="btn btn-gold" onclick="resetQuiz()">🔄 Jogar Novamente</button>
+  </div>
+</div>
+
+<footer>
+  Preparado com 💛 para o <span>Professor Guido</span> · Show do Milhão com Patrícia Abravanel · Boa sorte!
+  <br><span style="font-size:0.75rem; opacity:0.5; margin-top:0.4rem; display:block;">feito por <span style="color:var(--gold); opacity:1;">marco_polo_ofc</span></span>
+</footer>
+
+<script>
+const ALL_QUESTIONS = [
+  // CIÊNCIAS — NÍVEL 1
+  {cat:'ciencias', level:1, q:'Quantos litros cabem exatamente em um metro cúbico?', opts:['10','100','1.000','10.000'], ans:2, exp:'Um metro cúbico (1 m³) é equivalente a 1.000 litros.'},
+  {cat:'ciencias', level:1, q:'Qual é a raiz quadrada de 144?', opts:['10','12','14','16'], ans:1, exp:'12 × 12 = 144.'},
+  {cat:'ciencias', level:1, q:'Qual é o pH da água pura em temperatura ambiente?', opts:['0','5','7','14'], ans:2, exp:'A água pura tem pH 7 — substância neutra.'},
+  {cat:'ciencias', level:1, q:'A soma dos ângulos internos de um triângulo plano é sempre:', opts:['90°','180°','270°','360°'], ans:1, exp:'A soma dos ângulos internos de qualquer triângulo é sempre 180°.'},
+  {cat:'ciencias', level:1, q:'Na matemática, como é chamado um polígono com exatamente cinco lados?', opts:['Hexágono','Pentágono','Heptágono','Octógono'], ans:1, exp:'Pentágono = 5 lados.'},
+  {cat:'ciencias', level:1, q:'Quanto é 25% de 200?', opts:['25','50','75','100'], ans:1, exp:'25% = um quarto de 200 = 50.'},
+  {cat:'ciencias', level:1, q:'Quantos milímetros existem em um metro?', opts:['10','100','1.000','10.000'], ans:2, exp:'O prefixo "mili" indica a milésima parte do metro.'},
+  {cat:'ciencias', level:1, q:'Qual é o maior órgão do corpo humano?', opts:['Fígado','Intestino Grosso','Pele','Cérebro'], ans:2, exp:'A pele é o maior órgão em área e peso.'},
+  {cat:'ciencias', level:1, q:'Qual o valor de 15% de 240?', opts:['24','30','36','48'], ans:2, exp:'0,15 × 240 = 36.'},
+  {cat:'ciencias', level:1, q:'Qual organela é conhecida como a "usina de energia" da célula?', opts:['Núcleo','Ribossomo','Mitocôndria','Lisossomo'], ans:2, exp:'As mitocôndrias produzem ATP através da respiração celular.'},
+  {cat:'ciencias', level:1, q:'Quantos gramas há em 2,25 quilogramas?', opts:['225 g','2.250 g','22,5 g','22.500 g'], ans:1, exp:'1 kg = 1.000 g, então 2,25 kg = 2.250 g.'},
+  {cat:'ciencias', level:1, q:'Qual é o resultado de 2,5 litros convertidos para mililitros?', opts:['25 ml','250 ml','2.500 ml','25.000 ml'], ans:2, exp:'1 litro = 1.000 mililitros, então 2,5 × 1.000 = 2.500 ml.'},
+  {cat:'ciencias', level:1, q:'Qual é o ponto de ebulição da água em °C ao nível do mar?', opts:['80°C','90°C','100°C','110°C'], ans:2, exp:'Sob pressão de 1 atm, a água ferve a 100°C.'},
+  {cat:'ciencias', level:1, q:'Qual é o principal pigmento responsável pela fotossíntese?', opts:['Caroteno','Clorofila','Antocianina','Xantofila'], ans:1, exp:'A clorofila capta a luz solar para a fotossíntese.'},
+  {cat:'ciencias', level:1, q:'Quanto é 25% de 200?', opts:['25','50','75','100'], ans:1, exp:'25% de 200 = 50.'},
+  {cat:'ciencias', level:1, q:'Quantos centímetros há em 2 metros?', opts:['20','200','2.000','20.000'], ans:1, exp:'1 metro = 100 cm, então 2 m = 200 cm.'},
+  {cat:'ciencias', level:1, q:'Quantos centímetros há em 3,75 metros?', opts:['37,5 cm','375 cm','3.750 cm','37.500 cm'], ans:1, exp:'1 metro = 100 centímetros, então 3,75 × 100 = 375 cm.'},
+  {cat:'ciencias', level:1, q:'Convertendo 4.500 miligramas para gramas, qual é o resultado?', opts:['4,5 g','45 g','450 g','0,45 g'], ans:0, exp:'1.000 mg = 1 g, então 4.500 mg = 4,5 g.'},
+  // CIÊNCIAS — NÍVEL 2
+  {cat:'ciencias', level:2, q:'Qual é o elemento químico da tabela periódica representado pelo símbolo "W"?', opts:['Tungstênio','Tálio','Telúrio','Tântalo'], ans:0, exp:'"W" vem de Wolfram, nome original do Tungstênio.'},
+  {cat:'ciencias', level:2, q:'Qual tipo sanguíneo é considerado o doador universal no sistema ABO e fator Rh?', opts:['AB positivo','A negativo','O positivo','O negativo'], ans:3, exp:'O sangue O negativo pode ser doado para qualquer tipo sanguíneo.'},
+  {cat:'ciencias', level:2, q:'Qual o valor aproximado da aceleração da gravidade na superfície da Terra?', opts:['8,5 m/s²','9,8 m/s²','10,5 m/s²','12 m/s²'], ans:1, exp:'A gravidade terrestre média é de aproximadamente 9,8 m/s².'},
+  {cat:'ciencias', level:2, q:'Na tabela periódica, qual é o número atômico do carbono?', opts:['6','8','12','14'], ans:0, exp:'Carbono tem 6 prótons, portanto número atômico 6.'},
+  {cat:'ciencias', level:2, q:'Qual é a fórmula química do metano, o principal componente do gás natural?', opts:['CO₂','CH₄','NH₃','H₂O'], ans:1, exp:'O metano é formado por um carbono e quatro hidrogênios: CH₄.'},
+  {cat:'ciencias', level:2, q:'Qual planeta do sistema solar é conhecido como o "Planeta Vermelho"?', opts:['Vênus','Júpiter','Marte','Saturno'], ans:2, exp:'Marte tem coloração vermelha devido ao óxido de ferro em sua superfície.'},
+  {cat:'ciencias', level:2, q:'Qual cientista formulou a Lei da Gravitação Universal?', opts:['Albert Einstein','Isaac Newton','Galileo Galilei','Marie Curie'], ans:1, exp:'Newton publicou suas leis de movimento e gravitação na obra "Principia".'},
+  {cat:'ciencias', level:2, q:'Qual é a principal função dos glóbulos vermelhos (hemácias) no sangue?', opts:['Combater infecções','Coagular o sangue','Transportar oxigênio','Produzir anticorpos'], ans:2, exp:'As hemácias contêm hemoglobina, responsável pelo transporte de O₂.'},
+  {cat:'ciencias', level:2, q:'Na química, qual é o símbolo do elemento potássio?', opts:['P','Po','K','Pt'], ans:2, exp:'K vem do latim "kalium".'},
+  {cat:'ciencias', level:2, q:'Qual é a unidade SI de força?', opts:['Joule','Newton','Watt','Pascal'], ans:1, exp:'O newton (N) é a unidade derivada para força no Sistema Internacional.'},
+  {cat:'ciencias', level:2, q:'Qual lei física afirma que a pressão de um gás é inversamente proporcional ao volume?', opts:['Lei de Charles','Lei de Boyle','Lei de Avogadro','Lei de Gay-Lussac'], ans:1, exp:'Lei de Boyle-Mariotte: pressão inversamente proporcional ao volume a temperatura constante.'},
+  {cat:'ciencias', level:2, q:'Qual é a unidade de medida de resistência elétrica no SI?', opts:['Ampere','Volt','Ohm','Watt'], ans:2, exp:'O Ohm (Ω) mede a oposição à passagem de corrente elétrica.'},
+  {cat:'ciencias', level:2, q:'Qual é o resultado da multiplicação de 7,5 por 8?', opts:['50','55','60','65'], ans:2, exp:'7,5 × 8 = 60.'},
+  {cat:'ciencias', level:2, q:'Qual é o nome do composto H₂SO₄?', opts:['Ácido clorídrico','Ácido nítrico','Ácido sulfúrico','Ácido acético'], ans:2, exp:'H₂SO₄ é o ácido sulfúrico, um dos ácidos minerais mais importantes.'},
+  {cat:'ciencias', level:2, q:'Qual força mantém os planetas em órbita ao redor do Sol?', opts:['Força eletromagnética','Força nuclear fraca','Gravidade','Força nuclear forte'], ans:2, exp:'A gravitação universal de Newton explica as órbitas planetárias.'},
+  {cat:'ciencias', level:2, q:'Qual é o valor aproximado de π (pi) com duas casas decimais?', opts:['3,12','3,14','3,16','3,18'], ans:1, exp:'π ≈ 3,14159...'},
+  {cat:'ciencias', level:2, q:'Qual é a unidade SI de energia?', opts:['Volt','Ampere','Joule','Hertz'], ans:2, exp:'O joule mede trabalho e energia.'},
+  {cat:'ciencias', level:2, q:'Qual lei de Mendel descreve a segregação independente dos alelos?', opts:['Primeira Lei','Segunda Lei','Terceira Lei','Lei da Dominância'], ans:1, exp:'Segunda Lei de Mendel: Lei da Segregação Independente.'},
+  {cat:'ciencias', level:2, q:'Em física, o que mede o instrumento chamado barômetro?', opts:['Temperatura','Umidade','Pressão atmosférica','Velocidade do vento'], ans:2, exp:'Barômetro mede variações de pressão atmosférica.'},
+  {cat:'ciencias', level:2, q:'Qual é o resultado de 3,2 km convertidos para metros?', opts:['32 m','320 m','3.200 m','32.000 m'], ans:2, exp:'1 km = 1.000 m, então 3,2 × 1.000 = 3.200 m.'},
+  {cat:'ciencias', level:2, q:'Qual é o resultado de 7² - 5²?', opts:['24','12','20','14'], ans:0, exp:'49 - 25 = 24.'},
+  {cat:'ciencias', level:2, q:'Qual é o resultado de 9²?', opts:['72','81','99','90'], ans:1, exp:'9 ao quadrado é 81.'},
+  {cat:'ciencias', level:2, q:'Qual é o resultado de 12 × 15?', opts:['160','170','180','190'], ans:2, exp:'12 × 15 = 180.'},
+  {cat:'ciencias', level:2, q:'Qual é o resultado de 12 × 8?', opts:['84','92','96','88'], ans:2, exp:'12 × 8 = 96.'},
+  {cat:'ciencias', level:2, q:'Qual é o resultado de 100 ÷ 4?', opts:['20','25','30','40'], ans:1, exp:'100 dividido por 4 é 25.'},
+  {cat:'ciencias', level:2, q:'Qual gás é mais abundante na atmosfera terrestre?', opts:['Oxigênio','Nitrogênio','Gás carbônico','Hidrogênio'], ans:1, exp:'O nitrogênio compõe cerca de 78% da atmosfera.'},
+  {cat:'ciencias', level:2, q:'Qual é o pH considerado neutro?', opts:['0','5','7','14'], ans:2, exp:'O pH neutro é 7 — água pura.'},
+  {cat:'ciencias', level:2, q:'Qual órgão do corpo humano é responsável pela produção de insulina?', opts:['Fígado','Pâncreas','Rim','Baço'], ans:1, exp:'O pâncreas produz insulina, hormônio que regula a glicose.'},
+  {cat:'ciencias', level:2, q:'Em qual estado físico a matéria possui forma e volume definidos?', opts:['Gasoso','Líquido','Plasma','Sólido'], ans:3, exp:'O sólido mantém forma e volume definidos.'},
+  {cat:'ciencias', level:2, q:'Quantos graus tem um ângulo reto?', opts:['45°','60°','90°','120°'], ans:2, exp:'Um ângulo reto mede exatamente 90 graus.'},
+  // CIÊNCIAS — NÍVEL 3
+  {cat:'ciencias', level:3, q:'Segundo a Primeira Lei da Termodinâmica, a variação da energia interna de um sistema é igual à diferença entre:', opts:['Massa e volume','Calor e trabalho','Temperatura e pressão','Entalpia e entropia'], ans:1, exp:'A energia interna é o calor recebido menos o trabalho realizado.'},
+  {cat:'ciencias', level:3, q:'Na tabela periódica, qual família de elementos é conhecida por ser altamente estável e pouco reativa?', opts:['Metais Alcalinos','Halogênios','Gases Nobres','Calcogênios'], ans:2, exp:'Os gases nobres possuem a camada de valência completa, conferindo estabilidade.'},
+  {cat:'ciencias', level:3, q:'Qual vitamina é produzida pelo corpo humano com a exposição ao sol?', opts:['Vitamina A','Vitamina B12','Vitamina C','Vitamina D'], ans:3, exp:'A vitamina D é sintetizada com luz solar.'},
+  {cat:'ciencias', level:3, q:'Qual é o nome do processo de passagem do estado sólido diretamente para o gasoso?', opts:['Condensação','Sublimação','Fusão','Vaporização'], ans:1, exp:'Sublimação é a passagem direta de sólido para gás (ex: gelo seco, naftalina).'},
+  {cat:'ciencias', level:3, q:'Qual processo as plantas utilizam para produzir seu próprio alimento?', opts:['Respiração','Digestão','Fotossíntese','Fermentação'], ans:2, exp:'A fotossíntese produz glicose usando luz solar, CO₂ e água.'},
+
+  // CONHECIMENTOS GERAIS — NÍVEL 1
+  {cat:'gerais', level:1, q:'Qual é a capital da Austrália?', opts:['Sydney','Melbourne','Camberra','Brisbane'], ans:2, exp:'Camberra foi construída especificamente para ser a capital da Austrália — não é Sydney!'},
+  {cat:'gerais', level:1, q:'Qual é o maior oceano do planeta Terra?', opts:['Oceano Atlântico','Oceano Pacífico','Oceano Índico','Oceano Ártico'], ans:1, exp:'O Oceano Pacífico é o maior e o mais profundo do mundo.'},
+  {cat:'gerais', level:1, q:'Quem é o autor da série de livros "Sítio do Picapau Amarelo"?', opts:['Machado de Assis','Ziraldo','Monteiro Lobato','Ruth Rocha'], ans:2, exp:'Monteiro Lobato criou Emília, Visconde de Sabugosa e outros personagens.'},
+  {cat:'gerais', level:1, q:'Qual é a cor da caixa-preta de um avião?', opts:['Preta','Azul','Laranja','Branca'], ans:2, exp:'As caixas-pretas são LARANJAS fluorescentes para facilitar a localização em acidentes!'},
+  {cat:'gerais', level:1, q:'Qual rede social é famosa pelo limite de 140 caracteres e pelo uso de "hashtags"?', opts:['Facebook','Instagram','Twitter (X)','LinkedIn'], ans:2, exp:'O Twitter popularizou o microblogging e o uso do # para categorizar assuntos.'},
+  {cat:'gerais', level:1, q:'Qual é o maior rio do mundo em volume de água?', opts:['Nilo','Amazonas','Yangtze','Mississippi'], ans:1, exp:'O rio Amazonas detém o maior volume de água do mundo.'},
+  {cat:'gerais', level:1, q:'Qual destes esportes utiliza uma bola oval?', opts:['Futebol','Basquete','Rugby','Vôlei'], ans:2, exp:'O rugby usa bola oval. Futebol americano também!'},
+  {cat:'gerais', level:1, q:'Qual é o coletivo de "abelhas"?', opts:['Enxame','Rebanho','Manada','Cardume'], ans:0, exp:'Enxame é o termo para grupo de abelhas.'},
+  {cat:'gerais', level:1, q:'Qual cor resulta da mistura de azul com amarelo?', opts:['Roxo','Verde','Laranja','Marrom'], ans:1, exp:'Azul + amarelo = verde.'},
+  {cat:'gerais', level:1, q:'Qual é o fuso horário principal do Brasil (horário de Brasília)?', opts:['UTC-3','UTC-4','UTC-5','UTC-2'], ans:0, exp:'Brasília opera no fuso UTC-3.'},
+  {cat:'gerais', level:1, q:'Quem apresenta o programa "Domingão com Huck"?', opts:['Fausto Silva','Luciano Huck','Marcos Mion','Rodrigo Faro'], ans:1, exp:'Luciano Huck assumiu o Domingão após Faustão.'},
+  {cat:'gerais', level:1, q:'Qual destes é um aplicativo de mensagens?', opts:['Excel','WhatsApp','PowerPoint','Word'], ans:1, exp:'WhatsApp é o aplicativo de mensagens mais usado no Brasil.'},
+  {cat:'gerais', level:1, q:'Qual é o nome do maior estádio de futebol do Brasil?', opts:['Mineirão','Maracanã','Morumbi','Arena Pantanal'], ans:1, exp:'Localizado no Rio de Janeiro, o Maracanã é o maior em capacidade do país.'},
+  {cat:'gerais', level:1, q:'Qual esporte é praticado com raquete e peteca?', opts:['Tênis','Badminton','Squash','Tênis de mesa'], ans:1, exp:'Badminton utiliza peteca (shuttlecock) e raquetes.'},
+  {cat:'gerais', level:1, q:'Qual é o coletivo de "jornais"?', opts:['Pilha','Monte','Acervo','Coleção'], ans:0, exp:'Pilha de jornais é o coletivo correto.'},
+  {cat:'gerais', level:1, q:'Qual é o esporte praticado com raquete e peteca?', opts:['Tênis','Badminton','Squash','Tênis de mesa'], ans:1, exp:'Badminton usa peteca (shuttlecock).'},
+  {cat:'gerais', level:1, q:'Qual fruta é conhecida como "rainha das frutas" no sudeste asiático?', opts:['Manga','Durian','Abacaxi','Banana'], ans:1, exp:'O durian tem aroma fortíssimo e é chamado de "rainha das frutas" no Sudeste Asiático.'},
+  {cat:'gerais', level:1, q:'Qual cantor brasileiro é conhecido como "Rei Roberto Carlos"?', opts:['Roberto Carlos','Caetano Veloso','Chico Buarque','Milton Nascimento'], ans:0, exp:'Roberto Carlos é o ícone da música romântica brasileira — "O Rei".'},
+  {cat:'gerais', level:1, q:'Qual país faz fronteira terrestre mais extensa com o Brasil?', opts:['Argentina','Bolívia','Venezuela','Peru'], ans:1, exp:'A Bolívia tem a maior extensão de fronteira com o Brasil.'},
+  {cat:'gerais', level:1, q:'Qual é o hino nacional brasileiro?', opts:['Hino à Bandeira','Hino Nacional Brasileiro','Canção do Exílio','Ouviram do Ipiranga'], ans:1, exp:'O Hino Nacional Brasileiro foi composto por Francisco Manuel da Silva.'},
+  {cat:'gerais', level:1, q:'Qual é o esporte conhecido como o "esporte rei" no Brasil?', opts:['Vôlei','Basquete','Futebol','Tênis'], ans:2, exp:'O futebol domina a cultura esportiva brasileira.'},
+  // CONHECIMENTOS GERAIS — NÍVEL 2
+  {cat:'gerais', level:2, q:'Em qual esporte a brasileira Rayssa Leal se destacou mundialmente?', opts:['Surfe','Ginástica Artística','Skate','Judô'], ans:2, exp:'Rayssa Leal, a "Fadinha", é uma premiada skatista brasileira.'},
+  {cat:'gerais', level:2, q:'Qual é a moeda oficial do Japão?', opts:['Yuan','Won','Iene','Baht'], ans:2, exp:'O Iene (¥) é a unidade monetária oficial japonesa.'},
+  {cat:'gerais', level:2, q:'O Oscar de Melhor Filme em 2020 foi vencido por uma produção sul-coreana. Qual era o título?', opts:['Minari','Oldboy','Parasita','Em Chamas'], ans:2, exp:'"Parasita" foi o primeiro filme em língua não inglesa a vencer a categoria.'},
+  {cat:'gerais', level:2, q:'Qual país sediou a Copa do Mundo FIFA de 2010?', opts:['Alemanha','Brasil','África do Sul','Rússia'], ans:2, exp:'A Copa de 2010 foi o primeiro Mundial realizado no continente africano.'},
+  {cat:'gerais', level:2, q:'Qual é a capital do estado de Minas Gerais?', opts:['Uberlândia','Juiz de Fora','Belo Horizonte','Ouro Preto'], ans:2, exp:'Belo Horizonte foi a primeira cidade brasileira planejada, capital desde 1897.'},
+  {cat:'gerais', level:2, q:'Qual país europeu é famoso pela produção de relógios de luxo e chocolates?', opts:['Áustria','Suíça','Bélgica','Holanda'], ans:1, exp:'A Suíça é mundialmente reconhecida por sua precisão relojoeira e política neutra.'},
+  {cat:'gerais', level:2, q:'Em qual cidade brasileira ocorre o festival de Parintins (Boi-Bumbá)?', opts:['Manaus','Santarém','Parintins','Belém'], ans:2, exp:'O festival acontece na Ilha de Parintins, no interior do Amazonas.'},
+  {cat:'gerais', level:2, q:'Quem foi o primeiro homem a viajar para o espaço, em 1961?', opts:['Neil Armstrong','Buzz Aldrin','Yuri Gagarin','Alan Shepard'], ans:2, exp:'O cosmonauta soviético Yuri Gagarin orbitou a Terra a bordo da Vostok 1.'},
+  {cat:'gerais', level:2, q:'Qual destas moedas é utilizada nos países da Zona do Euro?', opts:['Libra','Euro','Franco','Marco'], ans:1, exp:'O Euro é a moeda comum adotada pela maioria dos países membros da UE.'},
+  {cat:'gerais', level:2, q:'Qual é a capital do Canadá?', opts:['Toronto','Vancouver','Ottawa','Montreal'], ans:2, exp:'Ottawa é a capital canadense — não Toronto, que é a maior cidade!'},
+  {cat:'gerais', level:2, q:'Qual país é o maior produtor mundial de café?', opts:['Colômbia','Vietnã','Brasil','Etiópia'], ans:2, exp:'O Brasil lidera a produção global de café.'},
+  {cat:'gerais', level:2, q:'Qual país é conhecido como "Terra do Sol Nascente"?', opts:['China','Coreia do Sul','Japão','Tailândia'], ans:2, exp:'O Japão recebe esse apelido por sua posição geográfica a leste.'},
+  {cat:'gerais', level:2, q:'O que significa a sigla ONU?', opts:['Organização Nacional Unificada','Organização das Nações Unidas','Ordem Nacional Universal','Organização Nuclear Unida'], ans:1, exp:'ONU = Organização das Nações Unidas.'},
+  {cat:'gerais', level:2, q:'Qual é o idioma mais falado no mundo em número de falantes nativos?', opts:['Inglês','Espanhol','Mandarim','Hindi'], ans:2, exp:'O mandarim (chinês) lidera em número de falantes nativos.'},
+  {cat:'gerais', level:2, q:'Qual gênero musical brasileiro originou-se no Rio de Janeiro nos anos 1950-60?', opts:['Samba','Forró','Bossa Nova','Axé'], ans:2, exp:'A Bossa Nova é uma mistura de samba com jazz, criada no Rio.'},
+  {cat:'gerais', level:2, q:'Qual ilha brasileira é famosa por abrigar serpentes jararacas-douradas?', opts:['Ilha do Mel','Ilha Grande','Ilha da Queimada Grande','Ilha de Santa Catarina'], ans:2, exp:'Conhecida como Ilha das Cobras, com acesso proibido ao público.'},
+  {cat:'gerais', level:2, q:'Qual é a maior cidade do Brasil em número de habitantes?', opts:['Rio de Janeiro','São Paulo','Brasília','Salvador'], ans:1, exp:'São Paulo é a maior metrópole do Brasil e da América do Sul.'},
+  {cat:'gerais', level:2, q:'Qual é o maior animal terrestre?', opts:['Girafa','Elefante africano','Rinoceronte','Hipopótamo'], ans:1, exp:'O elefante africano é o maior animal terrestre do mundo.'},
+  {cat:'gerais', level:2, q:'Em qual continente está localizado o deserto do Saara?', opts:['Ásia','África','Oceania','América do Norte'], ans:1, exp:'O Saara é o maior deserto quente do mundo, no norte da África.'},
+  {cat:'gerais', level:2, q:'Em economia, o que significa a sigla PIB?', opts:['Produto Interno Bruto','Preço Índice Básico','Programa de Investimento Brasileiro','Produto Industrial Bruto'], ans:0, exp:'PIB = Produto Interno Bruto — principal medida da atividade econômica de um país.'},
+  {cat:'gerais', level:2, q:'Qual é o maior deserto do mundo?', opts:['Saara','Antártida','Gobi','Kalahari'], ans:1, exp:'A Antártida é o maior deserto polar — deserto não precisa ser quente!'},
+  {cat:'gerais', level:2, q:'Qual é o maior ponto do Brasil?', opts:['Pico da Neblina','Pico Paraná','Morro do Chapéu','Serra do Mar'], ans:0, exp:'Pico da Neblina, no Amazonas, com 2.995 m de altitude.'},
+  {cat:'gerais', level:2, q:'Qual é o nome do estádio mais famoso do Rio de Janeiro?', opts:['Allianz Parque','Maracanã','Morumbi','Mineirão'], ans:1, exp:'O Maracanã é um ícone do futebol mundial.'},
+  {cat:'gerais', level:2, q:'Quem pintou o famoso quadro brasileiro "Abaporu"?', opts:['Tarsila do Amaral','Anita Malfatti','Di Cavalcanti','Candido Portinari'], ans:0, exp:'A obra "Abaporu" foi pintada por Tarsila do Amaral em 1928.'},
+  {cat:'gerais', level:2, q:'Qual idioma é o oficial da Argentina?', opts:['Português','Espanhol','Inglês','Francês'], ans:1, exp:'O espanhol é o idioma oficial da Argentina.'},
+  // CONHECIMENTOS GERAIS — NÍVEL 3
+  {cat:'gerais', level:3, q:'Em que ano ocorreu a queda do Muro de Berlim?', opts:['1987','1989','1991','1993'], ans:1, exp:'O muro caiu em 9 de novembro de 1989, crucial para a reunificação da Alemanha.'},
+  {cat:'gerais', level:3, q:'Qual é o nome do atual Secretário-Geral das Nações Unidas (ONU)?', opts:['Ban Ki-moon','Kofi Annan','António Guterres','Tedros Adhanom'], ans:2, exp:'O diplomata português António Guterres assumiu o cargo máximo da ONU em 2017.'},
+  {cat:'gerais', level:3, q:'Qual o nome da maior floresta tropical do mundo?', opts:['Floresta do Congo','Floresta Amazônica','Taiga','Mata Atlântica'], ans:1, exp:'A Amazônia possui a maior biodiversidade do planeta.'},
+  {cat:'gerais', level:3, q:'Qual país sediou a Copa do Mundo FIFA de 2022?', opts:['Rússia','Catar','Alemanha','Japão'], ans:1, exp:'O Catar sediou a Copa de 2022, a primeira no Oriente Médio.'},
+  {cat:'gerais', level:3, q:'Quem é o autor da música "Garota de Ipanema"?', opts:['Caetano Veloso','Tom Jobim','Chico Buarque','Gilberto Gil'], ans:1, exp:'Tom Jobim (com Vinícius de Moraes) compôs "Garota de Ipanema".'},
+  {cat:'gerais', level:3, q:'Que instituição financeira internacional tem sede em Washington, D.C.?', opts:['FMI','Banco Mundial','OMC','OCDE'], ans:1, exp:'O Banco Mundial tem sede em Washington, D.C.'},
+  {cat:'gerais', level:3, q:'Quem foi o primeiro homem a pisar na Lua?', opts:['Buzz Aldrin','Yuri Gagarin','Neil Armstrong','Michael Collins'], ans:2, exp:'Neil Armstrong foi o primeiro ser humano a pisar na Lua, em 1969.'},
+  {cat:'gerais', level:3, q:'Em que país fica a cidade de Dubai?', opts:['Arábia Saudita','Catar','Emirados Árabes Unidos','Kuwait'], ans:2, exp:'Dubai fica nos Emirados Árabes Unidos (EAU).'},
+  {cat:'gerais', level:3, q:'Qual é o rio mais extenso do mundo?', opts:['Nilo','Amazonas','Yangtzé','Mississipi'], ans:1, exp:'O Amazonas é o mais extenso (embora haja debate com o Nilo em volume).'},
+
+  // PORTUGUÊS — NÍVEL 1
+  {cat:'portugues', level:1, q:'Qual é o coletivo correto de lobos?', opts:['Matilha','Alcateia','Rebanho','Manada'], ans:1, exp:'A palavra "alcateia" é o termo coletivo para um grupo de lobos.'},
+  {cat:'portugues', level:1, q:'Qual é o plural de "pão"?', opts:['Pãos','Pães','Pões','Pãezinhos'], ans:1, exp:'A forma correta do plural de pão é pães.'},
+  {cat:'portugues', level:1, q:'Qual é o plural de "animal"?', opts:['Animais','Animães','Animáes','Animels'], ans:0, exp:'Regra geral para palavras terminadas em -al: troca o -al por -ais.'},
+  {cat:'portugues', level:1, q:'Qual é o plural de "cidadão"?', opts:['Cidadãos','Cidadães','Cidadões','Cidadãens'], ans:0, exp:'A única forma correta para o plural de cidadão é cidadãos.'},
+  {cat:'portugues', level:1, q:'O coletivo de "lobos" é:', opts:['Matilha','Alcateia','Rebanho','Manada'], ans:1, exp:'Alcateia designa grupo de lobos.'},
+  // PORTUGUÊS — NÍVEL 2
+  {cat:'portugues', level:2, q:'Qual a forma correta do plural da palavra "cidadão"?', opts:['Cidadãos','Cidadões','Cidadães','Cidadãos e Cidadões'], ans:0, exp:'A única forma correta para o plural de cidadão é cidadãos.'},
+  {cat:'portugues', level:2, q:'Assinale a alternativa grafada corretamente:', opts:['Exceção','Excessão','Eseção','Exsessão'], ans:0, exp:'"Exceção" se escreve com "xc" e cedilha.'},
+  {cat:'portugues', level:2, q:'Qual é o substantivo coletivo de "mapas"?', opts:['Pinacoteca','Atlas','Arquivo','Cancioneiro'], ans:1, exp:'Atlas é o nome dado ao conjunto ou coleção de mapas geográficos.'},
+  {cat:'portugues', level:2, q:'Qual é o antônimo da palavra "efêmero"?', opts:['Passageiro','Duradouro','Breve','Fugaz'], ans:1, exp:'Efêmero = que dura pouco. Seu antônimo é "duradouro".'},
+  {cat:'portugues', level:2, q:'Em qual alternativa há erro de ortografia?', opts:['Exceção','Excessão','Sessão','Cessão'], ans:1, exp:'"Excessão" está incorreto — o correto é "exceção".'},
+  {cat:'portugues', level:2, q:'Qual palavra é um advérbio?', opts:['Bonito','Rapidamente','Casa','Livro'], ans:1, exp:'"Rapidamente" é advérbio de modo.'},
+  {cat:'portugues', level:2, q:'"Mau" com "u" é usado como:', opts:['Advérbio de intensidade','Adjetivo (oposto de bom)','Substantivo','Conjunção'], ans:1, exp:'"Mau" é adjetivo: mau humor, mau tempo. "Mal" é advérbio: sinto mal.'},
+  {cat:'portugues', level:2, q:'Qual é o antônimo da palavra "efêmero"?', opts:['Passageiro','Duradouro','Breve','Fugaz'], ans:1, exp:'Efêmero = que dura pouco; duradouro é o oposto.'},
+  {cat:'portugues', level:2, q:'Em qual alternativa todas as palavras estão corretamente acentuadas?', opts:['Idéia, herói, vôo','Ideia, herói, voo','Idéia, heroi, voo','Ideia, heroi, vôo'], ans:1, exp:'Após o Acordo Ortográfico, "ideia" e "voo" perderam o acento.'},
+  {cat:'portugues', level:2, q:'Qual é o feminino de "cavaleiro"?', opts:['Cavaleira','Cavalheira','Cavaliza','Cavalina'], ans:0, exp:'O feminino de cavaleiro é cavaleira.'},
+  {cat:'portugues', level:2, q:'Na frase "O menino _____ a bola ontem", qual verbo está correto?', opts:['Jogou','Joga','Jogue','Jogaria'], ans:0, exp:'"Jogou" é pretérito perfeito — indica ação concluída no passado.'},
+  {cat:'portugues', level:2, q:'"Mal" com "l" significa:', opts:['Oposto de bem','Doença','Apenas','Mau cheiro'], ans:0, exp:'"Mal" é advérbio ou substantivo: sinto mal (advérbio); um mal terrível (substantivo).'},
+  // PORTUGUÊS — NÍVEL 3
+  {cat:'portugues', level:3, q:'Na frase "A aluna assistiu ao filme", o verbo "assistir" está empregado com o sentido de:', opts:['Dar assistência','Caber direito','Presenciar','Morar'], ans:2, exp:'Assistir transitivo indireto (com "a") = ver, presenciar.'},
+  {cat:'portugues', level:3, q:'Qual das palavras abaixo é classificada como uma paroxítona?', opts:['Máquina','Café','Tórax','Computador'], ans:2, exp:'"Tórax" é paroxítona — sílaba tônica na penúltima posição: TÓ-rax.'},
+  {cat:'portugues', level:3, q:'Na frase "Faz dez anos que não o vejo", o verbo "fazer" está no singular porque:', opts:['O sujeito é oculto','Indica tempo decorrido (impessoal)','Concorda com "anos"','É um erro gramatical comum'], ans:1, exp:'Verbos que indicam tempo decorrido são impessoais — ficam na 3ª pessoa do singular.'},
+  {cat:'portugues', level:3, q:'Qual é a forma correta de escrever o profissional que faz entregas de moto?', opts:['Motoboy','Moto-boy','Moto boy','Motobói'], ans:0, exp:'De acordo com o uso comum, escreve-se "motoboy" sem hífen.'},
+  {cat:'portugues', level:3, q:'Qual é o tempo verbal da frase "Eu estudarei amanhã"?', opts:['Presente','Pretérito','Futuro do presente','Futuro do pretérito'], ans:2, exp:'"Estudarei" está no futuro do presente — indica ação futura certa.'},
+  {cat:'portugues', level:3, q:'Qual é o coletivo de peixes?', opts:['Matilha','Alcateia','Cardume','Manada'], ans:2, exp:'Cardume é o coletivo de peixes.'},
+  {cat:'portugues', level:3, q:'Qual é a função do sujeito na oração?', opts:['Indicar ação','Complementar o verbo','Indicar quem pratica ou sofre a ação','Indicar tempo'], ans:2, exp:'O sujeito é o ser sobre o qual se faz uma declaração.'},
+  {cat:'portugues', level:3, q:'Qual dessas palavras é um substantivo abstrato?', opts:['Amor','Pedra','Mesa','Carro'], ans:0, exp:'"Amor" é abstrato — não tem existência material concreta.'},
+
+  // HISTÓRIA — NÍVEL 3
+  {cat:'historia', level:3, q:'Qual diplomata brasileiro assinou o Tratado da Tríplice Aliança em 1865?', opts:['Visconde de Rio Branco','Marquês de Caxias','Francisco Octaviano de Almeida Rosa','José Maria da Silva Paranhos'], ans:2, exp:'Francisco Octaviano foi o enviado especial que negociou e assinou o tratado em Buenos Aires.'},
+  {cat:'historia', level:3, q:'Na Batalha de Tsushima (1905), qual almirante japonês liderou a frota vitoriosa?', opts:['Isoroku Yamamoto','Heihachiro Togo','Chuichi Nagumo','Takeo Kurita'], ans:1, exp:'O almirante Togo comandou a frota nipônica em uma das vitórias navais mais decisivas da história.'},
+  {cat:'historia', level:3, q:'Durante a Revolta da Chibata (1910), qual outro encouraçado foi tomado pelos marinheiros?', opts:['Bahia','São Paulo','Deodoro','Riachuelo'], ans:1, exp:'O encouraçado São Paulo, recém-chegado ao Brasil, também foi capturado pelos revoltosos.'},
+  {cat:'historia', level:3, q:'Qual rei inglês morreu na Batalha de Bosworth Field em 1485?', opts:['Henrique VI','Eduardo IV','Ricardo III','Henrique VII'], ans:2, exp:'A morte de Ricardo III encerrou a dinastia Plantageneta e iniciou a era Tudor.'},
+  {cat:'historia', level:3, q:'Qual operação militar britânica resultou no ataque à frota francesa em Mers-el-Kébir (1940)?', opts:['Operação Dynamo','Operação Catapult','Operação Overlord','Operação Torch'], ans:1, exp:'A Operação Catapult foi a ofensiva para impedir que os navios franceses fossem tomados pela Alemanha.'},
+  {cat:'historia', level:3, q:'Em que ano a dinastia Qing, última da China, chegou ao fim?', opts:['1900','1911','1925','1949'], ans:1, exp:'A Revolução Xinhai em 1911 derrubou o imperador Puyi e encerrou milênios de império.'},
+  {cat:'historia', level:3, q:'Qual tratado de 1750 revogou o Tratado de Tordesilhas?', opts:['Tratado de Utrecht','Tratado de Madrid','Tratado de Badajós','Tratado de Santo Ildefonso'], ans:1, exp:'O Tratado de Madrid, negociado por Alexandre de Gusmão, expandiu o território brasileiro.'},
+  {cat:'historia', level:3, q:'Quem liderou a Revolta de Nova Friburgo durante o Período da Regência no Brasil?', opts:['Bento Gonçalves','Manuel Congo','João Cândido','Francisco Sabino'], ans:1, exp:'Manuel Congo liderou a maior rebelião de escravizados do Vale do Paraíba em 1838.'},
+  {cat:'historia', level:3, q:'Na Roma Antiga, quem formava o Primeiro Triunvirato junto com Júlio César e Pompeu?', opts:['Marco Antônio','Lépido','Crasso','Otávio'], ans:2, exp:'Marco Licínio Crasso era o membro mais rico do grupo, falecendo em campanha na Pártia.'},
+  {cat:'historia', level:3, q:'Qual tratado encerrou a Guerra dos Trinta Anos em 1648?', opts:['Tratado de Utrecht','Paz de Vestfália','Tratado de Tordesilhas','Congresso de Viena'], ans:1, exp:'A Paz de Vestfália encerrou o conflito religioso europeu e estabeleceu o sistema de estados modernos.'},
+  {cat:'historia', level:3, q:'Qual foi o nome do levante militar ocorrido em 1924 em São Paulo, liderado por Isidoro Dias Lopes?', opts:['Revolução Constitucionalista','Coluna Prestes','Revolução de 1924','Revolta da Armada'], ans:2, exp:'A Revolução de 1924 foi a maior batalha urbana da história da cidade de São Paulo.'},
+  {cat:'historia', level:3, q:'Qual imperador romano promoveu o Edito de Milão, legalizando o cristianismo?', opts:['Nero','Diocleciano','Constantino I','Teodósio I'], ans:2, exp:'Constantino I promoveu o Edito de Milão em 313 d.C., legalizando o cristianismo.'},
+  {cat:'historia', level:3, q:'Quem foi o líder haitiano que proclamou a independência do Haiti após Toussaint Louverture?', opts:['Dessalines','Bolívar','San Martín','Hidalgo'], ans:0, exp:'Jean-Jacques Dessalines proclamou a independência do Haiti em 1804.'},
+  {cat:'historia', level:3, q:'Qual foi a principal cidade da Liga Hanseática na Alemanha medieval?', opts:['Berlim','Hamburgo','Lübeck','Frankfurt'], ans:2, exp:'Lübeck foi o centro político e econômico da Liga Hanseática.'},
+  {cat:'historia', level:3, q:'Qual tratado de 1494 dividiu as terras americanas entre Portugal e Espanha?', opts:['Tratado de Madrid','Tratado de Tordesilhas','Tratado de Utrecht','Tratado de Methuen'], ans:1, exp:'O Tratado de Tordesilhas estabeleceu uma linha imaginária dividindo o mundo entre as duas potências.'},
+  {cat:'historia', level:3, q:'Qual faraó egípcio promoveu o culto monoteísta ao deus Aton?', opts:['Ramsés II','Tutancâmon','Akhenaton','Hatshepsut'], ans:2, exp:'Akhenaton (Amenhotep IV) instituiu o atonismo, um dos primeiros monoteísmos da história.'},
+  {cat:'historia', level:3, q:'Qual foi o nome dado pelos portugueses ao território brasileiro inicialmente?', opts:['Terra de Santa Cruz','Nova Lusitânia','Ilha de Vera Cruz','Província de São Pedro'], ans:2, exp:'O Brasil foi inicialmente chamado de "Ilha de Vera Cruz" por Cabral em 1500.'},
+  {cat:'historia', level:3, q:'Qual foi o destino final de Tiradentes após condenação na Inconfidência Mineira?', opts:['Exílio em Portugal','Enforcamento e esquartejamento','Prisão perpétua','Degredo na África'], ans:1, exp:'Tiradentes foi executado publicamente no Rio de Janeiro em 1792, e seu corpo esquartejado.'},
+  {cat:'historia', level:3, q:'Qual imperador romano ordenou a construção da Muralha de Adriano na Britânia?', opts:['Trajano','Marco Aurélio','Adriano','Septímio Severo'], ans:2, exp:'A Muralha de Adriano foi construída por volta de 122 d.C. para defender a fronteira norte da Britânia.'},
+  {cat:'historia', level:3, q:'Quem foi o líder da Revolta dos Malês no Brasil em 1835?', opts:['Zumbi','Pacífico Licutan','Tiradentes','Bento Gonçalves'], ans:1, exp:'Pacífico Licutan foi um dos principais líderes da Revolta dos Malês em Salvador.'},
+  {cat:'historia', level:3, q:'Qual foi o nome da revolta ocorrida na Bahia em 1798 com forte participação popular?', opts:['Revolta dos Malês','Conjuração Baiana','Guerra dos Farrapos','Sabinada'], ans:1, exp:'A Conjuração Baiana (Revolta dos Alfaiates) de 1798 tinha caráter igualitário e abolicionista.'},
+  {cat:'historia', level:3, q:'Quem capitulou a expedição bandeirante do século XVII no interior do Brasil?', opts:['Entradas e Bandeiras','Capitanias Reais','Sesmarias','Governo-Geral'], ans:0, exp:'As Entradas e Bandeiras foram expedições que expandiram o território brasileiro para além do Tratado de Tordesilhas.'},
+];
+
+let filteredQuestions = [...ALL_QUESTIONS];
+let currentIdx = 0;
+let correct = 0, wrong = 0, answered = 0;
+let answeredSet = new Set();
+let answeredDetails = {}; // idx -> chosen answer index
+
+// ─── PERSISTÊNCIA (localStorage) ───────────────────────────
+const SAVE_KEY = 'guido_milhao_save';
+
+function saveState() {
+  const state = {
+    currentIdx,
+    correct, wrong, answered,
+    answeredSet: [...answeredSet],
+    answeredDetails,
+    currentCat: document.querySelector('.cat-tab.active')?.dataset?.cat || 'all',
+    filteredIdxs: filteredQuestions.map(q => ALL_QUESTIONS.indexOf(q))
+  };
+  try { localStorage.setItem(SAVE_KEY, JSON.stringify(state)); } catch(e) {}
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(SAVE_KEY);
+    if (!raw) return false;
+    const s = JSON.parse(raw);
+    currentIdx = s.currentIdx || 0;
+    correct = s.correct || 0;
+    wrong = s.wrong || 0;
+    answered = s.answered || 0;
+    answeredSet = new Set(s.answeredSet || []);
+    answeredDetails = s.answeredDetails || {};
+    if (s.filteredIdxs && s.filteredIdxs.length) {
+      filteredQuestions = s.filteredIdxs.map(i => ALL_QUESTIONS[i]).filter(Boolean);
+    }
+    // restore active tab
+    if (s.currentCat) {
+      document.querySelectorAll('.cat-tab').forEach(t => {
+        t.classList.toggle('active', t.dataset.cat === s.currentCat);
+      });
+    }
+    return true;
+  } catch(e) { return false; }
+}
+
+function clearState() {
+  try { localStorage.removeItem(SAVE_KEY); } catch(e) {}
+}
+// ────────────────────────────────────────────────────────────
+
+function filterCat(cat, btn) {
+  document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  if (cat === 'all') filteredQuestions = [...ALL_QUESTIONS];
+  else if (cat === 'nivel1') filteredQuestions = ALL_QUESTIONS.filter(q => q.level === 1);
+  else if (cat === 'nivel2') filteredQuestions = ALL_QUESTIONS.filter(q => q.level === 2);
+  else if (cat === 'nivel3') filteredQuestions = ALL_QUESTIONS.filter(q => q.level === 3);
+  else filteredQuestions = ALL_QUESTIONS.filter(q => q.cat === cat);
+  currentIdx = 0;
+  answeredSet = new Set();
+  answeredDetails = {};
+  saveState();
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const container = document.getElementById('quiz-container');
+  container.innerHTML = '';
+  if (!filteredQuestions.length) {
+    container.innerHTML = '<p style="color:rgba(255,255,255,0.5); padding:2rem;">Nenhuma pergunta nesta categoria.</p>';
+    return;
+  }
+  const q = filteredQuestions[currentIdx];
+  const letters = ['A','B','C','D'];
+  const alreadyAnswered = answeredSet.has(currentIdx);
+  const chosenIdx = answeredDetails[currentIdx] !== undefined ? answeredDetails[currentIdx] : -1;
+  const card = document.createElement('div');
+  card.className = 'question-card active';
+  card.innerHTML = `
+    <div class="q-meta">
+      <span class="q-cat">${{ciencias:'🔬 Ciências & Mat.',gerais:'🌍 Conh. Gerais',historia:'📜 História',portugues:'📖 Português'}[q.cat]}</span>
+      <span class="q-level level-${q.level}">Nível ${q.level}</span>
+    </div>
+    <div class="q-text">${q.q}</div>
+    <div class="options-grid">
+      ${q.opts.map((o,i) => {
+        let cls = '';
+        if (alreadyAnswered) {
+          cls = 'disabled ';
+          if (i === q.ans) cls += 'correct';
+          else if (i === chosenIdx) cls += 'wrong';
+        }
+        return `<button class="option-btn ${cls}"
+                  onclick="selectAnswer(${i}, ${q.ans}, '${q.exp.replace(/'/g,"\\'")}', this)">
+          <span class="option-letter">${letters[i]}</span>
+          ${o}
+        </button>`;
+      }).join('')}
+    </div>
+    <div class="answer-reveal ${alreadyAnswered?'show':''}" id="answer-reveal">
+      <span>✅ Resposta:</span> ${q.exp}
+    </div>
+  `;
+  container.appendChild(card);
+  document.getElementById('q-counter').textContent = `${currentIdx+1} / ${filteredQuestions.length}`;
+  const pct = (currentIdx / filteredQuestions.length) * 100;
+  document.getElementById('progress-bar').style.width = pct + '%';
+  updateStats();
+}
+
+function selectAnswer(chosen, correct_ans, exp, btn) {
+  if (answeredSet.has(currentIdx)) return;
+  answeredSet.add(currentIdx);
+  answeredDetails[currentIdx] = chosen;
+  answered++;
+  const allBtns = document.querySelectorAll('.option-btn');
+  allBtns.forEach((b,i) => {
+    b.classList.add('disabled');
+    if (i === correct_ans) b.classList.add('correct');
+    else if (b === btn && i !== correct_ans) b.classList.add('wrong');
+  });
+  const reveal = document.getElementById('answer-reveal');
+  if (reveal) reveal.classList.add('show');
+  if (chosen === correct_ans) correct++;
+  else wrong++;
+  updateStats();
+  saveState();
+}
+
+function updateStats() {
+  document.getElementById('score-correct').textContent = correct;
+  document.getElementById('score-wrong').textContent = wrong;
+  document.getElementById('score-total').textContent = answered;
+  const pct = answered > 0 ? Math.round((correct/answered)*100) : 0;
+  document.getElementById('score-pct').textContent = pct + '%';
+}
+
+function nextQuestion() {
+  if (currentIdx < filteredQuestions.length - 1) {
+    currentIdx++;
+    saveState();
+    renderQuestion();
+  } else if (answered > 0) {
+    showModal();
+  }
+}
+
+function prevQuestion() {
+  if (currentIdx > 0) {
+    currentIdx--;
+    saveState();
+    renderQuestion();
+  }
+}
+
+function showModal() {
+  const total = Object.keys(answeredSet).length || answered;
+  const pct = answered > 0 ? Math.round((correct/answered)*100) : 0;
+  let emoji = '🏆', title = 'INCRÍVEL!', text = 'Você está pronto pro Show do Milhão!';
+  if (pct < 50) { emoji = '😅'; title = 'MAIS ESTUDO!'; text = 'Ainda tem bastante espaço pra melhorar. Volta pro começo!'; }
+  else if (pct < 70) { emoji = '📚'; title = 'BOM PROGRESSO!'; text = 'Já está ficando bom. Continue estudando os pontos fracos!'; }
+  else if (pct < 85) { emoji = '⭐'; title = 'MUITO BOM!'; text = 'Quase lá! Com mais uns dias, vai arrasar!'; }
+  document.getElementById('modal-emoji').textContent = emoji;
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-score').textContent = `${correct}/${answered}`;
+  document.getElementById('modal-text').textContent = text + ' — Aproveitamento: ' + pct + '%';
+  document.getElementById('modal').classList.add('show');
+}
+
+function resetQuiz() {
+  document.getElementById('modal').classList.remove('show');
+  currentIdx = 0;
+  correct = 0; wrong = 0; answered = 0;
+  answeredSet = new Set();
+  answeredDetails = {};
+  clearState();
+  renderQuestion();
+}
+
+// SCROLL REVEAL
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// INIT — restaura progresso salvo se existir
+loadState();
+renderQuestion();
+</script>
+</body>
+</html>
